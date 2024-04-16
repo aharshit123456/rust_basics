@@ -2,10 +2,10 @@
 
 use rand::Rng;
 use std::cmp::Ordering;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, Read};
 use std::io::{BufRead, BufReader, ErrorKind, Write};
-
 use std::ops::Add;
 
 fn say_hello() {
@@ -21,8 +21,145 @@ fn get_sum_gen<T: Add<Output = T>>(x: T, y: T) -> T {
     return x + y;
 }
 
+/*
+Stack: Stores values in LIFO
+    Data in a finite size
+*/
+
+/*
+Heap: space requested to OS to find space available
+ returned as an address in form of a pointer
+
+Rules:
+1. value has variable called owner
+2. only one owner
+3. When owner out of scope, value disappears
+*/
+
+fn print_str(x: String) {
+    println!("A string {}", x);
+}
+
+fn print_return_str(x: String) -> String {
+    println!("A string {}", x);
+    x
+}
+
+fn change_string(name: &mut String) {
+    name.push_str(" is happy");
+    println!("Message: {}", name);
+}
+
 fn main() {
+
     /*
+    Crates: Modules that produce a library or executable
+    Modules: Organise and handle privacy
+    Packages:Build, test and share crates
+    Paths: A way of naming an item such as a struct, function
+     */
+
+    /*
+    const PI: f32 = 3.14;
+
+    trait Shape {
+        fn new(length: f32, width: f32) -> Self;
+        fn area(&self) -> f32;
+    }
+
+    struct Rectangle {
+        length: f32,
+        width: f32,
+    };
+    struct Circle {
+        length: f32,
+        width: f32,
+    };
+
+    impl Shape for Rectangle {
+        fn new(length: f32, width: f32) -> Rectangle {
+            return Rectangle { length, width };
+        }
+        fn area(&self) -> f32 {
+            return self.length * self.width;
+        }
+    }
+
+    impl Shape for Circle {
+        fn new(length: f32, width: f32) -> Self {
+            return Circle { length, width };
+        }
+        fn area(&self) -> f32 {
+            return (self.length / 2.0).powf(2.0) * PI;
+        }
+    }
+
+    let rect: Rectangle = Shape::new(10.0, 10.0);
+    let circle: Circle = Shape::new(10.0, 10.0);
+
+    println!(
+        " Rec Area: {} \n Circle Area: {}",
+        rect.area(),
+        circle.area()
+    );
+
+
+
+
+        struct Rectangle<T, U> {
+        length: T,
+        height: U,
+    }
+
+    let rect = Rectangle {
+        length: 4,
+        height: 10.5,
+    };
+    struct Customer {
+        name: String,
+        address: String,
+        balance: f32,
+    }
+
+    let mut bob = Customer {
+        name: String::from("Bob Smith"),
+        address: String::from("555 Main St"),
+        balance: 234.50,
+    };
+
+    bob.address = String::from("505 Main St");
+
+
+
+    let mut heroes = HashMap::new();
+    heroes.insert("Superman", "Clark Kent");
+    heroes.insert("Batman", "Bruce Wayne");
+    heroes.insert("The Flash", "Barry Allen");
+
+    for (k, v) in heroes.iter() {
+        println!(" {}'s real name is {}", k, v);
+    }
+
+    println!("Length: {}", heroes.len());
+
+    if heroes.contains_key(&"Batman") {
+        let the_batman = heroes.get(&"Batman");
+        match the_batman {
+            Some(x) => println!("Batman is a hero"),
+            None => println!("Batman is not a hero"),
+        }
+    }
+
+     let mut str1 = String::from("Derek");
+    // let str2 = str1.clone();
+    // print!("Hello {}", str1);
+
+    // print_str(str1);
+    // let str3 = print_return_str(str1);
+    // println!("{}", str3);
+    change_string(&mut str1);
+
+
     println!("What is your name? ");
     let mut name = String::new();
     let greeting: &str = "Nice to meet you";
@@ -224,9 +361,8 @@ fn main() {
 
     println!("{}", get_sum(5, 4));
     let (val_1, val_2) = get_2(3);
-    println!("Nums : {} {}", val_1, val_2);*/
+    println!("Nums : {} {}", val_1, val_2);
 
     println!("5 + 4 = {}", get_sum_gen(5, 4));
-    println!("5.2 + 4.6 = {}", get_sum_gen(5.2, 4.6));
-    println!("5 + 4 = {}", get_sum_gen(5, 4));
+    println!("5.2 + 4.6 = {}", get_sum_gen(5.2, 4.6));*/
 }
