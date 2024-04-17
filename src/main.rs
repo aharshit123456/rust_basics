@@ -51,6 +51,9 @@ fn change_string(name: &mut String) {
 }
 
 fn main() {
+    let mut str1 = String::from("Derek");
+    let str2 = str1.clone();
+    print!("Hello {}", str1);
 
     /*
     Crates: Modules that produce a library or executable
